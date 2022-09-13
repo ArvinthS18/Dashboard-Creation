@@ -1,5 +1,5 @@
 import React from 'react'
-import icon from '../images/f.png';
+import icon from '../images/2.png';
 import { Button, Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className='nav-container'>
         <div className='logo-container'>
   
-            <Avatar src={icon} align="center" size="large"/></div>    
+            <Avatar src={icon} align="center" /></div>    
 <div>
         <Menu theme="dark">
         <Menu.Item icon={<HomeOutlined />}>

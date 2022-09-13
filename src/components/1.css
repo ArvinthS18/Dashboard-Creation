@@ -9,11 +9,11 @@ margin-top: 10px;
 
 }
 
-
 .featured {
-    width: 100%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
+   
   }
   
   .featuredItem {
@@ -28,6 +28,7 @@ margin-top: 10px;
   
   .featuredTitle{
       font-size: 20px;
+      color: green
   }
   
   .featuredMoneyContainer{
@@ -39,7 +40,12 @@ margin-top: 10px;
   .featuredMoney{
       font-size: 30px;
       font-weight: 600;
+      color: green;
+    
   }
+  .featuredMoney:hover{
+    color:#1890ff;
+}
   
   .featuredMoneyRate{
       display: flex;
