@@ -1,15 +1,4 @@
 
-:root{
-    --text-primary:#000;
-    --bgPrimary:#fff;
-   --bgSecondary: #F9F9F9;
-   --pink: #0071bd;
-   --light-blue: #e6f7ff;
-   --border: #d9d9d9;
-}
-
-
-
 a:hover{
     color: var(--pink) !important;
 }
@@ -17,17 +6,24 @@ a:hover{
 .app{
     display: flex;
     overflow: hidden;
+    font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .navbar{
     flex: 0.2;
     background-color: rgb(0, 21, 41);
+   
 }
 
 .main{
-    position:static;
-    flex: 0.8;
-    width: 100%;
+    
+        text-align: center;
+        font-family: "Lucida Console", "Courier New", monospace;
+      
+        flex: 0.8;
+        width: 100%;
+        position: -webkit-sticky;
+  position: sticky;
     
 }
 .routes{
@@ -40,6 +36,7 @@ a:hover{
     height: 100vh;
     margin: 0px;
     background-color: rgb(0, 21, 41);
+    
 }
 
 .logo-container{
@@ -369,13 +366,16 @@ width: 70%;
 .header{
     background-color: #001529;
     align-items: center;
+    width: 100%;
+       ;        
+      
 
 }
 .header :hover{
     color:#4fbc1f;
 }
 .footer {
-    position: absolute;
+    /* position: static;
     background-color: #001529;
     display: flex;
     flex-direction: column;
@@ -385,5 +385,16 @@ width: 70%;
     left: 0;
     right: 0;
     height:100px;
-    
+    */
+  
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:#001529;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    color: white;
+    text-align: center;
+    position: bottom;
 }

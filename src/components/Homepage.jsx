@@ -288,7 +288,7 @@ render() {
       <div className="featuredItem">
         <span className="featuredTitle">Top Price</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$  {this.state.m}</span>
+          <span className="featuredMoney">$  {this.props.m1}</span>
           <span className="featuredMoneyRate">
             {/* -11.4 */}
           </span>

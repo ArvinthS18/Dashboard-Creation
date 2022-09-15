@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className='logo-container'>
   
             <Avatar src={icon} align="center" /></div>    
-<div>
+<div className='asas'>
         <Menu theme="dark">
         <Menu.Item icon={<HomeOutlined />}>
           <Link to="/">Dashboard</Link>
@@ -19,7 +19,7 @@ const Navbar = () => {
           <Link to="/exchanges">Chart Compare</Link>
         </Menu.Item>
         <Menu.Item icon={<BulbOutlined />}>
-          <Link to="/news">Table View</Link>
+          <Link to="/news">Table View</Link>              
         </Menu.Item>
         <Menu.Item icon={<FundOutlined />}>
           <Link to="/cryptocurrencies">Cryptocurrencies</Link>
