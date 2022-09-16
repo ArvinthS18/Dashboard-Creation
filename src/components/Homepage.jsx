@@ -7,7 +7,8 @@ import pic from './8.png';
 import moment from 'moment';
 import { Button } from 'antd';
 import './1.css';
-import Wid from "./wid";
+import Tab12 from './Tab';
+
 export default class Homepage extends PureComponent {
   constructor(props){
     super(props);
@@ -16,52 +17,9 @@ export default class Homepage extends PureComponent {
       b:false,
       c:false,
       d:false,
-      color:"White",
-      API_URL : "https://api.coincap.io/v2/assets/bitcoin/history?interval=d1",m:0,c1:[],s:[],s1:[],s11:[],
+      color:"White"
     };
   }
-componentWillMount(){
-        $.ajax({
-          url: "https://api.coincap.io/v2/assets/bitcoin/history?interval=d1",
-          contentType: "application/json"
-        })
-          .done(
-            function(abcd) {
-
-              //Chart data
-              let temp = [];
-              for(let i=0;i<10;i++){ temp.push(abcd.data[i]); }
-              this.setState({ chart_data : temp});
-              console.log(this.state.chart_data);
-
-              //Set value on the front maximum value and these details
-              let temp1 = [];
-              for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
-              this.setState({ c1 : temp1});
-              console.log(this.state.c1,"aa1")
-              const ids = this.state.c1.map(object => {
-                return object.priceUsd;
-              });
-              // console.log(ids,"aa12");
-              const max = Math.max(...ids);
-              // console.log(max);
-              this.setState({ m : Math.floor(max)});
-              let temp3 = [];
-              for(let i=0;i<363;i++){ temp3.push(abcd.data[i]); }
-              temp3?.sort((a, b) => (a.priceUsd > b.priceUsd ? -1 : 1))
-              // console.table(temp3[0].priceUsd)
-              this.setState({ s : temp3[0].priceUsd});
-              this.setState({ s1 : temp3[0].date});
-              this.setState({ s11 : temp3[0].time});
-            }.bind(this)
-          )
-          
-          .fail(
-            function(datas) {
-            }.bind(this)
-          );
-          
-          }
           // Chart Portion
           ss =()=>{
             this.setState({a:true,b:false,c:false})
@@ -84,128 +42,17 @@ componentWillMount(){
               }
           }
           dateFormatter (item) {
-            return moment(item).format("DD MMM YY");}
-            
-            apicall(API_URL, Coin) {        
-              $.ajax({
-                  url: API_URL,
-                  contentType: "application/json"
-              })
-                  .done(
-                      function (abcd) {
-                          let temp = [];
-                          for (let i = 0; i < 10; i++){ temp.push(abcd.data[i]); }
-                          this.setState({ chart_data: temp});
-
-                          if (Coin === "BTC"){
-              let temp1 = [];
-              for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
-              this.setState({ c1 : temp1});
-              console.log(this.state.c1,"aa1")
-              const ids = this.state.c1.map(object => {
-                return object.priceUsd;
-              });
-              const max = Math.max(...ids);
-            
-              this.setState({ m : Math.floor(max)});
-              // get properties   
-              let temp3 = [];
-              for(let i=0;i<363;i++){ temp3.push(abcd.data[i]); }
-              temp3?.sort((a, b) => (a.priceUsd > b.priceUsd ? -1 : 1))
-              this.setState({ s : temp3[0].priceUsd});
-              this.setState({ s1 : temp3[0].date});
-              this.setState({ s11 : temp3[0].time});}
-              else if ((Coin === "ETC")){
-                let temp1 = [];
-                for(let i=0;i<10;i++){ temp1.push(abcd.data[i]); }
-                this.setState({ c1 : temp1});
-                const ids = this.state.c1.map(object => {
-                  return object.priceUsd;
-                });
-                const max = Math.max(...ids);
-               
-                this.setState({ m : Math.floor(max)});
-                // get properties   
-                let temp3 = [];
-                for(let i=0;i<10;i++){ temp3.push(abcd.data[i]); }
-                temp3?.sort((a, b) => (a.priceUsd > b.priceUsd ? -1 : 1))
-               
-                this.setState({ s : temp3[0].priceUsd});
-                this.setState({ s1 : temp3[0].date});
-                this.setState({ s11 : temp3[0].time});
-              }
-              else if ((Coin === "ETC")){
-
-
-                let temp1 = [];
-                for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
-                this.setState({ c1 : temp1});
-                
-                const ids = this.state.c1.map(object => {
-                  return object.priceUsd;
-                });
-                
-                const max = Math.max(...ids);
-                
-                this.setState({ m : Math.floor(max)});
-                // get properties   
-                let temp3 = [];
-                for(let i=0;i<363;i++){ temp3.push(abcd.data[i]); }
-                temp3?.sort((a, b) => (a.priceUsd > b.priceUsd ? -1 : 1))
-              
-                this.setState({ s : temp3[0].priceUsd});
-                this.setState({ s1 : temp3[0].date});
-                this.setState({ s11 : temp3[0].time});}
-                else if ((Coin === "XMR")){
-                  let temp1 = [];
-                  for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
-                  this.setState({ c1 : temp1});
-                  
-                  const ids = this.state.c1.map(object => {
-                    return object.priceUsd;
-                  });
-                  
-                  const max = Math.max(...ids);
-                
-                  this.setState({ m : Math.floor(max)});
-                  // get properties   
-                  let temp3 = [];
-                  for(let i=0;i<363;i++){ temp3.push(abcd.data[i]); }
-                  temp3?.sort((a, b) => (a.priceUsd > b.priceUsd ? -1 : 1))
-                  this.setState({ s : temp3[0].priceUsd});
-                  this.setState({ s1 : temp3[0].date});
-                  this.setState({ s11 : temp3[0].time});
-              }
-                      }.bind(this)
-                  )
-                  .fail(
-                      function (datas) {
-                      }
-                  );
-          }
-      //Currency chart
-      setBTC(){ this.apicall("https://api.coincap.io/v2/assets/bitcoin/history?interval=d1","BTC")}
-      setBCH(){this.apicall("https://api.coincap.io/v2/assets/ethereum-classic/history?interval=d1", "ETC")}
-      setETH(){this.apicall(" https://api.coincap.io/v2/assets/monero/history?interval=d1", "XMR")}
-      
+            return moment(item).format("DD MMM YY");}     
 render() {
   return (
     <div className='qw'>
+      
      
    <div style={{backgroundColor:this.state.color}}>
-   <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Crytocurrencies
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" type="button" onClick={(e) => this.setBTC(e)} >BTC</a>
-    <a class="dropdown-item" type="button" onClick={(e) => this.setBCH(e)}>ETC</a>
-    <a class="dropdown-item" type="button" onClick={(e) => this.setETH(e)}>XMR</a>
-  </div>
-</div>
+ 
+<br></br>
 <span className='A'>
   <button class="btn btn-info" onClick={this.ds}><img src={pic} alt=";;" style={{width:"50px",height:"50px"}} /></button></span>
-  
 <div className='d'>
     <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -218,12 +65,13 @@ render() {
   </div>
 </div></div>
     {this.state.a && 
+    
     <div className='a'>
             <h1 align="center"style={{color:"green"}}><b>LINE CHART</b></h1>
              <LineChart
-        width={1000}
-        height={300}
-        data={this.state.chart_data}
+        width={1400}
+        height={330}
+        data={this.props.Chart_Data}
         margin={{
           top: 5,
           right: 30,
@@ -241,11 +89,11 @@ render() {
       </LineChart>
       </div> }{this.state.b &&
      <div className='b'>
-     <h1 align="center"><b>BAR CHART</b></h1>
+     <h1 align="center" style={{color:"green"}}><b>BAR CHART</b></h1>
        <BarChart
          width={1500}
          height={300}
-         data={this.state.chart_data}
+         data={this.props.Chart_Data}
          margin={{
            top: 5,
            right: 30,
@@ -264,11 +112,11 @@ render() {
        </div>}
        {this.state.c && 
        <div>
-<h1 align="center"><b>AREA CHART</b></h1>
+<h1 align="center" style={{color:"green"}}><b>AREA CHART</b></h1>
 <AreaChart
   width={1530}
   height={250}
-  data={this.state.chart_data}
+  data={this.props.Chart_Data}
   margin={{
     top: 20, right: 20, bottom: 20, left: 20,
   }}
@@ -298,19 +146,34 @@ render() {
       <div className="featuredItem">
         <span className="featuredTitle">Top Price details</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$ {this.state.m}</span>
+          <span className="featuredMoney">$ {this.props.m1}</span>
           <span className="featuredMoneyRate">
-          DATE:  {this.state.s1}
+          DATE:  {this.props.d1}
           </span>
         </div>
         <span className="featuredSub"> TIME
-        : {this.state.s11}</span>
+        : {this.props.d2}</span>
       </div>
+      <div className="currency">
+                <table className="table table-dark table-sm">
+                    <thead>
+                        <tr><td>Coins</td></tr>
+                    </thead>
+                    <tbody >{this.props.ab ? this.props.ab.map((author, index) =>
+                        <tr key={index}>
+                            <td onClick={(e) => this.props.SetCoin(author.id)}>{author.symbol +"-"+ author.name} </td>
+                        </tr>
+                    ): ""}
+                    </tbody>
+                </table>
+            </div>
     </div>
+
        <br></br>
        <br></br>
        <br></br>
        </div>
+
        </div>
   );
 }

@@ -8,28 +8,8 @@ export default class App extends PureComponent {
     super(props);
     this.state = {chart_data : []};
   }
-  componentWillMount(){
-        $.ajax({
-          url: "https://api.coincap.io/v2/assets",
-          contentType: "application/json"
-        })
-          .done(
-            function(abcd) {
-              let temp = [];
-              for(let i=0;i<100;i++){ temp.push(abcd.data[i]); }
-              this.setState({ chart_data : temp});
-              console.log(this.state.chart_data)
-            }.bind(this)
-          )
-          .fail(
-            function(datas) {
-            }.bind(this)
-          );
-          //console.log(this.state.chart_data)
-          }
-         
-  render() {
-    const UserData = this.state.chart_data.map((author,index) => 
+  render() { console.log(this.props.ab,"aaaaaaaaa")
+    const UserData = this.props.ab.map((author,index) => 
     <tr key={index}>
       <td>{index+1}</td>
       <td>{author.id}</td>
@@ -46,15 +26,12 @@ export default class App extends PureComponent {
     return (
       <div>
         <br></br>
-            <h2 class="normal" align="center"><b>JSON Live Data Search using Ajax</b></h2>
-            <h3 align="center"><b>Author's Data</b></h3>
+            {/* <h2 class="normal" align="center"><b>JSON Live Data Search using Ajax</b></h2> */}
+            <h2 align="center"><b>CryptoCurrencies Data</b></h2>
             <br></br>
             <div >
-           
-        <br />
-     
-       
-    { this.state.chart_data.length > 0  ? <table className="table table-hover table-success">          
+        <br /> 
+    { this.props.ab.length > 0  ? <table className="table table-hover table-success">          
             <thead>
               <tr>
                 <td>S.No</td>

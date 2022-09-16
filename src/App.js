@@ -26,7 +26,7 @@ export default class App extends Component {
           let temp1 = [];
           for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
           this.setState({ c1 : temp1});
-          console.log(this.state.c1,"aa1")
+          // console.log(this.state.c1,"aa1")
           const ids = this.state.c1.map(object => {
             return object.priceUsd;
           });
@@ -69,19 +69,44 @@ export default class App extends Component {
   set_Coin(id) {
     $.ajax({
       url: "https://api.coincap.io/v2/assets/"+id+"/history?interval=d1",
+      
       contentType: "application/json"
     })
       .done(
         function (abcd) {
-          console.log(abcd.data);
-          this.setState({ chart_data: abcd.data});       
+         
+          this.setState({ chart_data: abcd.data});   
+          console.log(this.state.chart_data,"ll"); 
+          let temp1 = [];
+          for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
+          this.setState({ c1 : temp1});
+          console.log(this.state.c1,"aa1")
+          const ids = this.state.c1.map(object => {
+            return object.priceUsd;
+          });
+          // console.log(ids,"aa12");
+          const max = Math.max(...ids);
+          // console.log(max);
+          this.setState({ m : Math.floor(max)});
+          console.log(this.state.m,"max")
+          let temp3 = [];
+          for(let i=0;i<363;i++){ temp3.push(abcd.data[i]); }
+          temp3?.sort((a, b) => (a.priceUsd > b.priceUsd ? -1 : 1))
+          // console.table(temp3[0].priceUsd)     
+          this.setState({ s : temp3[0].priceUsd});
+          this.setState({ s1 : temp3[0].date});
+          this.setState({ s11 : temp3[0].time});   
         }.bind(this)
       )
       .fail(
         function (datas) {
         }
       );
+
+
   }
+
+  
   render() {console.log(this.state.API_URL);
 
   return (
@@ -96,11 +121,11 @@ export default class App extends Component {
           <Typography.Title level={2} className="logo" align="center"><Link to="/"><b>Project Cryptoverse</b></Link></Typography.Title>
         </div>
         <Routes>
-        <Route path="/" element={ <Homepage Chart_Data = {this.state.chart_data} m1={this.state.m}d={this.state.s} d1={this.state.s1} d2={this.state.s11} /> } />
+        <Route path="/" element={ <Homepage Chart_Data = {this.state.chart_data} m1={this.state.m}d={this.state.s} d1={this.state.s1} d2={this.state.s11} ab = {this.state.all_assests} SetCoin={this.set_Coin}   /> } />
         <Route path="/exchanges" element={ <Exchanges/> } />
         <Route path="/cryptocurrencies" element={ <Cryptocurrencies/> } />
         <Route path="/crypto/:coinId" element={ <CryptoDetails/> } />
-        <Route path="/news" element={ <News/> } />
+        <Route path="/news" element={ <News ab = {this.state.all_assests} /> } />
       </Routes>
     
         <div className='footer'>
@@ -118,7 +143,6 @@ export default class App extends Component {
         </div>
         </Layout>
         </div>
-        
     </div>
   )
 }}

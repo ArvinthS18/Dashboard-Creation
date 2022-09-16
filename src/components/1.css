@@ -22,8 +22,8 @@ margin-top: 10px;
     padding: 30px;
     border-radius: 10px;
     cursor: pointer;
-    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(76, 73, 73, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(101, 99, 99, 0.75);
   }
   
   .featuredTitle{
@@ -51,6 +51,7 @@ margin-top: 10px;
       display: flex;
       align-items: center;
       margin-left: 20px;
+      color: gray;
   }
   
   .featuredIcon{
@@ -67,24 +68,15 @@ margin-top: 10px;
       font-size: 15px;
       color: gray;
   }
-body {
-    text-align: center;
-    font-family: "Lucida Console", "Courier New", monospace;
-}
 
-h2 {
-    color: #ffffff;
-
-}
-
-h3 {
-    color: #ffffff;
-}
-table, th, td{
-border: 4px solid ;
-padding: 15px;
-text-align: center;
-}
-tr:nth-child(even) {
-background-color: #ffffff;
+.currency {
+  position: static;
+  top: 56px;
+  width: 224px;
+  right: 11px;
+  height: 250px;
+  overflow: auto;
+  display: flex;
+    justify-content: space-between;
+   
 }

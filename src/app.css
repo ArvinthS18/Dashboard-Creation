@@ -22,8 +22,7 @@ a:hover{
       
         flex: 0.8;
         width: 100%;
-        position: -webkit-sticky;
-  position: sticky;
+        
     
 }
 .routes{
@@ -396,5 +395,5 @@ width: 70%;
     display: flex;
     color: white;
     text-align: center;
-    position: bottom;
+    position: fixed;
 }
