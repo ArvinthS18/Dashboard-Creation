@@ -69,7 +69,7 @@ render() {
     <div className='a'>
             <h1 align="center"style={{color:"green"}}><b>LINE CHART</b></h1>
              <LineChart
-        width={1400}
+        width={1200}
         height={330}
         data={this.props.Chart_Data}
         margin={{
@@ -91,7 +91,7 @@ render() {
      <div className='b'>
      <h1 align="center" style={{color:"green"}}><b>BAR CHART</b></h1>
        <BarChart
-         width={1500}
+         width={1200}
          height={300}
          data={this.props.Chart_Data}
          margin={{
@@ -114,7 +114,7 @@ render() {
        <div>
 <h1 align="center" style={{color:"green"}}><b>AREA CHART</b></h1>
 <AreaChart
-  width={1530}
+  width={1230}
   height={250}
   data={this.props.Chart_Data}
   margin={{

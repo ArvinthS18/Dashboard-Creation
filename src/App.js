@@ -58,6 +58,9 @@ export default class App extends Component {
       .done(
         function (abcd) {
           console.log(abcd.data,"22");
+          let temp1 = [];
+          for(let i=0;i<10;i++){ temp1.push(abcd.data[i]); }
+          this.setState({ c1 : temp1});
           this.setState({ all_assests: abcd.data });
         }.bind(this)
       )
@@ -123,7 +126,7 @@ export default class App extends Component {
         <Routes>
         <Route path="/" element={ <Homepage Chart_Data = {this.state.chart_data} m1={this.state.m}d={this.state.s} d1={this.state.s1} d2={this.state.s11} ab = {this.state.all_assests} SetCoin={this.set_Coin}   /> } />
         <Route path="/exchanges" element={ <Exchanges/> } />
-        <Route path="/cryptocurrencies" element={ <Cryptocurrencies/> } />
+        <Route path="/cryptocurrencies" element={ <Cryptocurrencies ab = {this.state.c1}/> } />
         <Route path="/crypto/:coinId" element={ <CryptoDetails/> } />
         <Route path="/news" element={ <News ab = {this.state.all_assests} /> } />
       </Routes>
