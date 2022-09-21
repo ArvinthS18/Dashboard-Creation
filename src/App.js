@@ -10,7 +10,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      all_assests: []     
+      all_assests: [], qw:[]
     };
     this.set_Coin = this.set_Coin.bind(this);
   }
@@ -62,6 +62,37 @@ export default class App extends Component {
           for(let i=0;i<10;i++){ temp1.push(abcd.data[i]); }
           this.setState({ c1 : temp1});
           this.setState({ all_assests: abcd.data });
+          this.setState({ c2 : temp1});
+               /////////////////////////// // cretion of objects/////////////////////////////
+          // console.log(this.state.c2,"l")
+          const ids = this.state.c2.map(object => {
+            return parseInt(object.volumeUsd24Hr);
+          });
+          //  console.log(ids,"sjsjjs")
+           let idss = this.state.c2.map(object => {
+            return object.name;
+          });
+          //  console.log(idss,"sjsjjs123")
+           let data0 =[
+            "green",
+            "yellow",
+            "aqua",
+            "blue",
+            "orange",
+            "red",
+            "black",
+            "purple",
+            "gray"
+           ]
+          let cff = [];
+          idss.forEach((v,i) => 
+          cff= [...cff, {"name": idss[i], "value":ids[i],"fill":data0[i]}])
+// //Using map()
+// var dataMap = ids.map((v,i) => 
+//  ({"label": idss[i], "value":ids[i]})
+// )
+          this.setState({ qw : cff});
+          console.log('data: ', cff);
         }.bind(this)
       )
       .fail(
@@ -79,11 +110,11 @@ export default class App extends Component {
         function (abcd) {
          
           this.setState({ chart_data: abcd.data});   
-          console.log(this.state.chart_data,"ll"); 
+          // console.log(this.state.chart_data,"ll"); 
           let temp1 = [];
           for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
           this.setState({ c1 : temp1});
-          console.log(this.state.c1,"aa1")
+          // console.log(this.state.c1,"aa1")
           const ids = this.state.c1.map(object => {
             return object.priceUsd;
           });
@@ -104,13 +135,9 @@ export default class App extends Component {
       .fail(
         function (datas) {
         }
-      );
-
-
-  }
-
-  
-  render() {console.log(this.state.API_URL);
+      )
+  } 
+  render() {
 
   return (
     <div className='app'>
@@ -126,7 +153,7 @@ export default class App extends Component {
         <Routes>
         <Route path="/" element={ <Homepage Chart_Data = {this.state.chart_data} m1={this.state.m}d={this.state.s} d1={this.state.s1} d2={this.state.s11} ab = {this.state.all_assests} SetCoin={this.set_Coin}   /> } />
         <Route path="/exchanges" element={ <Exchanges/> } />
-        <Route path="/cryptocurrencies" element={ <Cryptocurrencies ab = {this.state.c1}/> } />
+        <Route path="/cryptocurrencies" element={ <Cryptocurrencies ab = {this.state.qw}/> } />
         <Route path="/crypto/:coinId" element={ <CryptoDetails/> } />
         <Route path="/news" element={ <News ab = {this.state.all_assests} /> } />
       </Routes>

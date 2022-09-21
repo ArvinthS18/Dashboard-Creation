@@ -11,7 +11,7 @@ export default class App extends PureComponent {
   ds=()=>
   {
   if(this.state.color=="White"){
-      this.setState({color:"grey"})}
+      this.setState({color:"aliceblue"})}
   else{
 
         this.setState({color:"White"})
@@ -31,7 +31,6 @@ export default class App extends PureComponent {
    <span className='A'>
   <button class="btn btn-info" onClick={this.ds}><img src={pic} alt=";;" style={{width:"50px",height:"50px"}} /></button></span>
         <br></br>
-            {/* <h2 class="normal" align="center"><b>JSON Live Data Search using Ajax</b></h2> */}
             <h2 align="center"><b>CryptoCurrencies Data</b></h2>
             <br></br>
             <div >
@@ -40,9 +39,9 @@ export default class App extends PureComponent {
       width={1500}
       height={1200}
       cx={450}
-      cy={550}
-      innerRadius={90}
-      outerRadius={440}
+      cy={400}
+      innerRadius={60}
+      outerRadius={340}
       barSize={700}
       data={this.props.ab}
     >
@@ -51,7 +50,7 @@ export default class App extends PureComponent {
         label={{ position: "insideStart",  fill: "#8884d8", }}
         background
         clockWise
-        dataKey="volumeUsd24Hr"
+        dataKey="value"
       />
       <Legend
         iconSize={10}
