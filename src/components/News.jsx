@@ -22,6 +22,42 @@ export default class App extends PureComponent {
     const detail = (Val === null) ? "No data" : parseInt(Val);
     return detail;
   }
+  sorting_table(event, sortKey) {
+    const data = this.state.Lib;
+    if (sortKey == "name") {
+        if (this.state.order == "Asc") {
+            data.sort((a, b) => a[sortKey].localeCompare(b[sortKey]))
+            this.setState({ Lib: data, order: "Dec" })
+        }
+        if (this.state.order == "Dec") {
+            data.sort((a, b) => b[sortKey].localeCompare(a[sortKey]))
+            this.setState({ Lib: data, order: "Asc" });                                          //Sortong_table for sorting
+
+        }
+
+    }
+    else if (sortKey == "work_count") {
+
+        if (this.state.order == "Asc") {
+            data.sort((a, b) => a[sortKey] - b[sortKey])
+            this.setState({ Lib: data, order: "Dec" })
+        }
+        if (this.state.order == "Dec") {
+            data.sort((a, b) => b[sortKey] - a[sortKey])
+            this.setState({ Lib: data, order: "Asc" });
+        }
+
+    }
+}
+searchByName(val) {
+  this.setState(() => ({ searchInput: val.target.value }));
+  let a = this.state.Lib.filter(value => value.name.toLowerCase().includes(val.target.value.toLowerCase()));
+  console.log(a, 'aaa')
+  this.setState(() => ({ FilteredTable: a }))
+}
+
+
+
 
   render() { console.log(this.props.ab,"aaaaaaaaa")
     const UserData = this.props.ab.map((author,index) => 
@@ -60,7 +96,7 @@ export default class App extends PureComponent {
                 <td>MAXSUPPLY</td>
                 <td>MARKETCAP USD</td> 
                 <td>VOLUME USD 24hr</td> 
-                <td>PRICE USD</td>            
+                <td>PRICE USD<i onClick={e => this.sorting_table(e, "name")} className="fa fa-fw fa-sort"></i></td>            
                 <td>CHANGE PERCENT 24hr</td> 
                 <td>VWAP 24hr</td> 
                 <td>EXPLORER</td>
