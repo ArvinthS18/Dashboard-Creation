@@ -10,7 +10,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      all_assests: [], qw:[]
+      all_assests: [], qw:[], coin_name : "",
+      coin_symbol : ""
     };
     this.set_Coin = this.set_Coin.bind(this);
   }
@@ -22,7 +23,7 @@ export default class App extends Component {
       .done(
         function (abcd) {
           console.log(abcd.data,"11");
-          this.setState({ chart_data: abcd.data });
+          this.setState({ chart_data: abcd.data ,coin_name:"Bitcoin", coin_symbol: "BTC"});
           let temp1 = [];
           for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
           this.setState({ c1 : temp1});
@@ -100,7 +101,7 @@ export default class App extends Component {
         }
       );
   }
-  set_Coin(id) {
+  set_Coin(id,name,symbol) {
     $.ajax({
       url: "https://api.coincap.io/v2/assets/"+id+"/history?interval=d1",
       
@@ -109,7 +110,10 @@ export default class App extends Component {
       .done(
         function (abcd) {
          
-          this.setState({ chart_data: abcd.data});   
+          this.setState({ chart_data: abcd.data, coin_name: name,
+            coin_symbol: symbol}); 
+            
+            console.log(this.state.coin_name,"llllllllllllllllllllllllllllllllllllllllllllll")
           // console.log(this.state.chart_data,"ll"); 
           let temp1 = [];
           for(let i=0;i<363;i++){ temp1.push(abcd.data[i]); }
@@ -151,7 +155,8 @@ export default class App extends Component {
           <Typography.Title level={2} className="logo" align="center"><Link to="/"><b>Project Cryptoverse</b></Link></Typography.Title>
         </div>
         <Routes>
-        <Route path="/" element={ <Homepage Chart_Data = {this.state.chart_data} m1={this.state.m}d={this.state.s} d1={this.state.s1} d2={this.state.s11} ab = {this.state.all_assests} SetCoin={this.set_Coin}   /> } />
+        <Route path="/" element={ <Homepage Chart_Data = {this.state.chart_data} m1={this.state.m}d={this.state.s} d1={this.state.s1} d2={this.state.s11} ab = {this.state.all_assests} SetCoin={this.set_Coin} Coin_Name={this.state.coin_name}
+              Coin_Symbol={this.state.coin_symbol}  /> } />
         <Route path="/exchanges" element={ <Exchanges/> } />
         <Route path="/cryptocurrencies" element={ <Cryptocurrencies ab = {this.state.qw}/> } />
         <Route path="/crypto/:coinId" element={ <CryptoDetails/> } />

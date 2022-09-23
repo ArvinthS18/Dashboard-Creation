@@ -31,7 +31,8 @@ export default class App extends PureComponent {
    <span className='A'>
   <button class="btn btn-info" onClick={this.ds}><img src={pic} alt=";;" style={{width:"50px",height:"50px"}} /></button></span>
         <br></br>
-            <h2 align="center"><b>CryptoCurrencies Data</b></h2>
+        <h1 align="center" style={{color:"green"}}><b>CryptoCurrencies Data</b></h1>
+            {/* <h2 align="center"><b></b></h2> */}
             <br></br>
             <div >
         <br /> 

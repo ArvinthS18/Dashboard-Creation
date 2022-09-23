@@ -35,7 +35,7 @@ export default class Homepage extends PureComponent {
           ds=()=>
           {
           if(this.state.color=="White"){
-              this.setState({color:"black"})}
+              this.setState({color:"aliceblue"})}
           else{
 
                 this.setState({color:"White"})
@@ -49,7 +49,7 @@ render() {
       
      
    <div style={{backgroundColor:this.state.color}}>
- 
+   <div className="col-md-6" style={{ position: "absolute", fontSize: "22px", left: "104px", top: "100px" }}> {this.props.Coin_Name + " - " + this.props.Coin_Symbol}</div>
 <br></br>
 <span className='A'>
   <button class="btn btn-info" onClick={this.ds}><img src={pic} alt=";;" style={{width:"50px",height:"50px"}} /></button></span>
@@ -64,6 +64,7 @@ render() {
     <button class="dropdown-item" type="button" onClick={this.ss2}>Area Chart</button>
   </div>
 </div></div>
+
     {this.state.a && 
     
     <div className='a'>
@@ -161,7 +162,7 @@ render() {
                     </thead>
                     <tbody >{this.props.ab ? this.props.ab.map((author, index) =>
                         <tr key={index}>
-                            <td onClick={(e) => this.props.SetCoin(author.id)}>{author.symbol +"-"+ author.name} </td>
+                            <td onClick={(e) => this.props.SetCoin(author.id,author.name,author.symbol)}>{author.symbol +"-"+ author.name} </td>
                         </tr>
                     ): ""}
                     </tbody>

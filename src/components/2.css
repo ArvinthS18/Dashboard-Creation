@@ -65,13 +65,18 @@ background-color: #ffffff;
     font-weight: bold;
     color: #009879;
 }
+.d{
 
-.AS
-{
-    margin-left: 37%;
-    margin-top: 10px;
+    position: relative;
+    display: inline-block;
 }
-.SA{
-margin-right: 32%;
-margin-top: 10px;
+.asv{
+      
+        position: fixed;
+        top: 50%;
+        right: 350%;
+      
+   
 }
+
+
